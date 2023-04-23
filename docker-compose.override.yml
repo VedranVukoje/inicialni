@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+  php:
+    build:
+      target: init_dev
+    environment:
+      XDEBUG_CONFIG: >-
+        default_enable=0
+        mode=debug
+        start_with_request=yes
+        discover_client_host=0
+        client_host=host.docker.internal
+        client_port=9003
+        idekey=hss
+      PHP_IDE_CONFIG: serverName=hss
+    volumes:
+      - ./api/:/srv/api:rw,cached

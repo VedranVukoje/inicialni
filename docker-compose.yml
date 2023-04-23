@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+  php:
+    build:
+      target: init
+      args:
+        PHP_VERSION: ${PHP_VERSION:-8.1}
+        APP_ENV: ${APP_ENV:-dev}
+      context: ./api
+    image: ${PHP_IMAGE:-init-php}
+    volumes:
+      - share-data:/srv/api:rw,cached
+
+volumes:
+  share-data: {}
